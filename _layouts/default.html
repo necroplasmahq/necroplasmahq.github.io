@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="{{ site.lang | default: 'pt-BR' }}">
 <head>
@@ -13,37 +12,54 @@
         href="{{ '/feed.xml' | relative_url }}">
 </head>
 <body>
-  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+  <a class="skip-link" href="#conteudo">
+    Pular para o conteúdo
+  </a>
 
   <header class="site-header">
-    <div class="container">
-      <a class="site-title" href="{{ '/' | relative_url }}">
-        NECROPLASMA
+    <div class="container header-inner">
+      <a class="site-brand" href="{{ '/' | relative_url }}"
+         aria-label="Necroplasma, página inicial">
+        <span class="site-brand__name">Necroplasma</span>
+        <span class="site-brand__subtitle">O universo de Spawn</span>
       </a>
-      <p class="site-description">
-        Histórias e arquivos do universo Spawn
-      </p>
 
-      <nav aria-label="Navegação principal">
-        <a href="{{ '/' | relative_url }}">Início</a>
-        <a href="{{ '/quadrinhos/' | relative_url }}">Quadrinhos</a>
-        <a href="{{ '/personagens/' | relative_url }}">Personagens</a>
-        <a href="{{ '/arquivo/' | relative_url }}">Arquivo</a>
-        <a href="{{ '/blog/' | relative_url }}">Blog</a>
-        <a href="{{ '/sobre/' | relative_url }}">Sobre</a>
+      <nav class="site-nav" aria-label="Navegação principal">
+        <a href="{{ '/' | relative_url }}"
+           {% if page.url == '/' %}aria-current="page"{% endif %}>
+          Início
+        </a>
+        <a href="{{ '/historias/' | relative_url }}"
+           {% if page.url contains '/historias/' %}aria-current="page"{% endif %}>
+          Histórias
+        </a>
+        <a href="{{ '/personagens/' | relative_url }}"
+           {% if page.url contains '/personagens/' %}aria-current="page"{% endif %}>
+          Personagens
+        </a>
+        <a href="{{ '/arquivo/' | relative_url }}"
+           {% if page.url contains '/arquivo/' %}aria-current="page"{% endif %}>
+          Arquivo
+        </a>
+        <a href="{{ '/sobre/' | relative_url }}"
+           {% if page.url contains '/sobre/' %}aria-current="page"{% endif %}>
+          Sobre
+        </a>
       </nav>
     </div>
   </header>
 
-  <main id="conteudo" class="container">
+  <main id="conteudo">
     {{ content }}
   </main>
 
   <footer class="site-footer">
     <div class="container">
       <p>&copy; {{ 'now' | date: '%Y' }} Necroplasma.</p>
-      <p>Blog independente de fã, sem vínculo oficial com
-      Todd McFarlane ou Image Comics.</p>
+      <p>
+        Projeto independente de fã, sem vínculo oficial com
+        Todd McFarlane ou Image Comics.
+      </p>
     </div>
   </footer>
 </body>

@@ -1,4 +1,3 @@
-
 hero:
   eyebrow: "Spawn"
   title: "Histórias, personagens e bastidores"
@@ -13,19 +12,35 @@ shortcuts:
   - title: "Histórias"
     description: "Arcos, edições e publicações"
     url: "/historias/"
-    icon: "book"
+    number: "01"
 
   - title: "Personagens"
     description: "Fichas, relações e aparições"
     url: "/personagens/"
-    icon: "users"
+    number: "02"
 
   - title: "Arquivo"
-    description: "História editorial e adaptações"
+    description: "História editorial, adaptações e curiosidades"
     url: "/arquivo/"
-    icon: "archive"
+    number: "03"
 
   - title: "Sobre"
     description: "O projeto Necroplasma"
     url: "/sobre/"
-    icon: "info"
+    number: "04"
+
+explore:
+  - title: "Arcos"
+    description: "Narrativas que atravessam uma ou mais edições."
+    url: "/historias/#arcos"
+    number: "01"
+
+  - title: "Edições"
+    description: "Edições originais, créditos e detalhes."
+    url: "/historias/#edicoes"
+    number: "02"
+
+  - title: "Publicações"
+    description: "Edições brasileiras, encadernados e coletâneas."
+    url: "/historias/#publicacoes"
+    number: "03"

@@ -1,6 +1,8 @@
 ---
-layout: default
+layout: home
 title: Início
+description: "Explore histórias, personagens, edições e bastidores do universo Spawn."
+permalink: /
 ---
 
 # Bem-vindo ao Necroplasma

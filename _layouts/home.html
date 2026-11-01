@@ -1,0 +1,134 @@
+---
+layout: default
+---
+
+{% assign home = site.data.home %}
+
+<div class="home">
+
+  <section class="home-hero" aria-labelledby="home-title">
+    <div class="container home-hero__inner">
+
+      <div class="home-hero__content">
+        <p class="home-eyebrow">
+          {{ home.hero.eyebrow | escape }}
+        </p>
+
+        <h1 id="home-title">
+          {{ home.hero.title | escape }}
+        </h1>
+
+        <p class="home-hero__description">
+          {{ home.hero.description | escape }}
+        </p>
+
+        <a class="home-button"
+           href="{{ home.hero.cta.url | relative_url }}">
+          {{ home.hero.cta.label | escape }}
+          <span aria-hidden="true">→</span>
+        </a>
+      </div>
+
+      <div class="home-hero__visual">
+        {% if home.hero.image != blank %}
+          <img
+            src="{{ home.hero.image | relative_url }}"
+            alt="{{ home.hero.image_alt | escape }}"
+            width="900"
+            height="675"
+            fetchpriority="high"
+          >
+        {% else %}
+          <span class="home-hero__placeholder" aria-hidden="true">
+            N
+          </span>
+        {% endif %}
+      </div>
+
+    </div>
+  </section>
+
+  <div class="container">
+
+    <nav class="home-shortcuts" aria-label="Explore o Necroplasma">
+      {% for item in home.shortcuts %}
+        <a class="home-shortcut"
+           href="{{ item.url | relative_url }}">
+
+          <span class="home-shortcut__number" aria-hidden="true">
+            {{ item.number }}
+          </span>
+
+          <strong>{{ item.title | escape }}</strong>
+
+          <span class="home-shortcut__description">
+            {{ item.description | escape }}
+          </span>
+        </a>
+      {% endfor %}
+    </nav>
+
+    <div class="home-content">
+
+      <section class="home-section" aria-labelledby="explore-title">
+        <h2 id="explore-title">Explore o universo</h2>
+
+        <div class="home-explore">
+          {% for item in home.explore %}
+            {% assign url_parts = item.url | split: '#' %}
+
+            <a class="home-explore__item"
+               href="{{ url_parts[0] | relative_url }}#{{ url_parts[1] }}">
+
+              <span class="home-explore__number" aria-hidden="true">
+                {{ item.number }}
+              </span>
+
+              <span class="home-explore__copy">
+                <strong>{{ item.title | escape }}</strong>
+                <span>{{ item.description | escape }}</span>
+              </span>
+
+              <span class="home-arrow" aria-hidden="true">→</span>
+            </a>
+          {% endfor %}
+        </div>
+      </section>
+
+      <section class="home-section" aria-labelledby="latest-title">
+        <h2 id="latest-title">Últimas publicações</h2>
+
+        {% assign latest = site.posts | slice: 0, 5 %}
+
+        {% if latest.size > 0 %}
+          <ul class="home-latest">
+            {% for post in latest %}
+              <li>
+                <a href="{{ post.url | relative_url }}">
+                  <span class="home-latest__thumbnail" aria-hidden="true">
+                    {{ post.title | slice: 0, 1 | upcase }}
+                  </span>
+
+                  <span class="home-latest__copy">
+                    <strong>{{ post.title | escape }}</strong>
+                    <span>
+                      {{ post.description | default: post.excerpt | strip_html | truncatewords: 14 }}
+                    </span>
+                  </span>
+
+                  <span class="home-arrow" aria-hidden="true">→</span>
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+        {% else %}
+          <p class="home-empty">
+            As primeiras publicações estão sendo preparadas.
+          </p>
+        {% endif %}
+      </section>
+
+    </div>
+
+  </div>
+</div>

@@ -1,7 +1,9 @@
 ---
-layout: category
+layout: default
 title: Quadrinhos
-description: Resenhas, edições e histórias do universo Spawn.
-category_name: quadrinhos
 permalink: /quadrinhos/
 ---
+
+# Quadrinhos
+
+O conteúdo desta seção agora está organizado em [Histórias]({{ '/historias/' | relative_url }}), com arcos narrativos, edições e publicações.
