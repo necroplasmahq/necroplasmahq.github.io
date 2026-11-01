@@ -3,6 +3,7 @@ layout: post
 title: "Bem-vindo ao Necroplasma"
 description: "Conheça a proposta do Necroplasma, um blog independente sobre os quadrinhos, personagens e histórias de Spawn."
 date: 2026-11-01 12:00:00 -0300
+categories: [pessoal]
 tags: [spawn, blog]
 ---
 
