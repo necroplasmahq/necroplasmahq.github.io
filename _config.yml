@@ -1,0 +1,44 @@
+title: "Necroplasma"
+description: "Quadrinhos, personagens, história sobre Spawn."
+lang: pt-BR
+
+# Configuração de endereço
+url: "https://necroplasmahq.github.io"
+baseurl: ""
+
+# Idioma e data
+timezone: America/Recife
+
+# URLs dos artigos
+permalink: /:categories/:title/
+
+# Processamento
+markdown: kramdown
+highlighter: rouge
+
+# Plugins
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-feed
+
+# RSS
+feed:
+  path: feed.xml
+
+# Configurações padrão das postagens
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+      author: "Wagner Beethoven"
+
+# Arquivos ignorados
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor/
+  - node_modules/

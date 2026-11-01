@@ -1,0 +1,48 @@
+
+---
+layout: default
+---
+
+<article class="post">
+  <header class="post-header">
+    {% if page.categories.size > 0 %}
+      <p class="post-category">
+        {{ page.categories | first | capitalize }}
+      </p>
+    {% endif %}
+
+    <h1>{{ page.title | escape }}</h1>
+
+    <p class="post-meta">
+      <time datetime="{{ page.date | date_to_xmlschema }}">
+        {{ page.date | date: "%d/%m/%Y" }}
+      </time>
+      {% if page.author %}
+        <span> · {{ page.author | escape }}</span>
+      {% endif %}
+    </p>
+
+    {% if page.image %}
+      <figure class="post-cover">
+        <img
+          src="{{ page.image | relative_url }}"
+          alt="{{ page.image_alt | escape }}"
+          width="1200"
+          height="675"
+          fetchpriority="high"
+        >
+        {% if page.image_caption %}
+          <figcaption>{{ page.image_caption | escape }}</figcaption>
+        {% endif %}
+      </figure>
+    {% endif %}
+  </header>
+
+  <div class="post-content">
+    {{ content }}
+  </div>
+
+  <footer class="post-footer">
+    <a href="{{ '/' | relative_url }}">Voltar ao início</a>
+  </footer>
+</article>

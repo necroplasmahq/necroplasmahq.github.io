@@ -1,0 +1,30 @@
+---
+layout: default
+---
+
+<section class="category-page">
+  <h1>{{ page.title | escape }}</h1>
+  <p>{{ page.description | escape }}</p>
+
+  {% assign posts = site.categories[page.category_name] %}
+
+  {% if posts and posts.size > 0 %}
+    <ul class="post-list">
+      {% for post in posts %}
+        <li>
+          <h2>
+            <a href="{{ post.url | relative_url }}">
+              {{ post.title | escape }}
+            </a>
+          </h2>
+          <time datetime="{{ post.date | date_to_xmlschema }}">
+            {{ post.date | date: "%d/%m/%Y" }}
+          </time>
+          <p>{{ post.description | default: post.excerpt | strip_html | truncatewords: 30 }}</p>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>Ainda não há publicações nesta seção.</p>
+  {% endif %}
+</section>

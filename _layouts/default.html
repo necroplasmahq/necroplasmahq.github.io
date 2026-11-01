@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: 'pt-BR' }}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  {% seo %}
+
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+  <link rel="alternate" type="application/atom+xml"
+        title="{{ site.title | escape }}"
+        href="{{ '/feed.xml' | relative_url }}">
+</head>
+<body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+  <header class="site-header">
+    <div class="container">
+      <a class="site-title" href="{{ '/' | relative_url }}">
+        NECROPLASMA
+      </a>
+      <p class="site-description">
+        Histórias e arquivos do universo Spawn
+      </p>
+
+      <nav aria-label="Navegação principal">
+        <a href="{{ '/' | relative_url }}">Início</a>
+        <a href="{{ '/quadrinhos/' | relative_url }}">Quadrinhos</a>
+        <a href="{{ '/personagens/' | relative_url }}">Personagens</a>
+        <a href="{{ '/arquivo/' | relative_url }}">Arquivo</a>
+        <a href="{{ '/blog/' | relative_url }}">Blog</a>
+        <a href="{{ '/sobre/' | relative_url }}">Sobre</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo" class="container">
+    {{ content }}
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; {{ 'now' | date: '%Y' }} Necroplasma.</p>
+      <p>Blog independente de fã, sem vínculo oficial com
+      Todd McFarlane ou Image Comics.</p>
+    </div>
+  </footer>
+</body>
+</html>
