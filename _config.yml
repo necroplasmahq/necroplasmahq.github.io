@@ -26,6 +26,23 @@ twitter:
   username: "necroplasmahq"
   card: summary_large_image
 
+collections:
+  arcos:
+    output: true
+    permalink: /historias/arcos/:name/
+  edicoes:
+    output: true
+    permalink: /historias/edicoes/:name/
+  publicacoes:
+    output: true
+    permalink: /historias/publicacoes/:name/
+  personagens:
+    output: true
+    permalink: /personagens/:name/
+  criadores:
+    output: true
+    permalink: /criadores/:name/
+
 defaults:
   - scope:
       path: ""
@@ -38,7 +55,30 @@ defaults:
 
   - scope:
       path: ""
-      type: posts
+      type: arcos
     values:
-      layout: post
-      author: "Wagner Beethoven"
+      layout: arco
+
+  - scope:
+      path: ""
+      type: edicoes
+    values:
+      layout: edicao
+
+  - scope:
+      path: ""
+      type: publicacoes
+    values:
+      layout: publicacao
+
+  - scope:
+      path: ""
+      type: personagens
+    values:
+      layout: personagem
+
+  - scope:
+      path: ""
+      type: criadores
+    values:
+      layout: criador

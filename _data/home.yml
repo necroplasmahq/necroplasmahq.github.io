@@ -1,0 +1,31 @@
+
+hero:
+  eyebrow: "Spawn"
+  title: "Histórias, personagens e bastidores"
+  description: "Um guia para explorar o universo criado por Todd McFarlane."
+  image: "/assets/images/home/spawn-hero.webp"
+  image_alt: ""
+  cta:
+    label: "Explorar histórias"
+    url: "/historias/"
+
+shortcuts:
+  - title: "Histórias"
+    description: "Arcos, edições e publicações"
+    url: "/historias/"
+    icon: "book"
+
+  - title: "Personagens"
+    description: "Fichas, relações e aparições"
+    url: "/personagens/"
+    icon: "users"
+
+  - title: "Arquivo"
+    description: "História editorial e adaptações"
+    url: "/arquivo/"
+    icon: "archive"
+
+  - title: "Sobre"
+    description: "O projeto Necroplasma"
+    url: "/sobre/"
+    icon: "info"
