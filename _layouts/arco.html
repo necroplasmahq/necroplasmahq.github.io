@@ -1,0 +1,26 @@
+---
+layout: ficha
+---
+
+<section class="entity-section">
+  <h2>Sobre o arco</h2>
+  <div class="entity-prose">{{ content }}</div>
+</section>
+
+{% if page.edicoes.size > 0 %}
+<section class="entity-section">
+  <h2>Edições do arco</h2>
+  <ol class="entity-links">
+    {% for id in page.edicoes %}
+      {% assign edicao = site.edicoes | where: 'id', id | first %}
+      {% if edicao %}
+        <li>
+          <a href="{{ edicao.url | relative_url }}">
+            {{ edicao.title | escape }}
+          </a>
+        </li>
+      {% endif %}
+    {% endfor %}
+  </ol>
+</section>
+{% endif %}

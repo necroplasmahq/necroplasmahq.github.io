@@ -30,15 +30,19 @@ collections:
   arcos:
     output: true
     permalink: /historias/arcos/:name/
+
   edicoes:
     output: true
     permalink: /historias/edicoes/:name/
+
   publicacoes:
     output: true
     permalink: /historias/publicacoes/:name/
+
   personagens:
     output: true
     permalink: /personagens/:name/
+
   criadores:
     output: true
     permalink: /criadores/:name/

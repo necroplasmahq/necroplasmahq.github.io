@@ -1,0 +1,40 @@
+---
+layout: ficha
+---
+
+<section class="entity-section">
+  <h2>Sobre</h2>
+  <div class="entity-prose">{{ content }}</div>
+</section>
+
+{% assign total = 0 %}
+
+{% capture trabalhos %}
+  {% for edicao in site.edicoes %}
+    {% assign funcoes = "" | split: "," %}
+
+    {% for grupo in edicao.creditos %}
+      {% if grupo[1] contains page.id %}
+        {% assign funcao = grupo[0] | replace: "_", " " | capitalize %}
+        {% assign funcoes = funcoes | push: funcao %}
+      {% endif %}
+    {% endfor %}
+
+    {% if funcoes.size > 0 %}
+      {% assign total = total | plus: 1 %}
+      <li>
+        <a href="{{ edicao.url | relative_url }}">
+          {{ edicao.title | escape }}
+        </a>
+        <span>{{ funcoes | join: ", " }}</span>
+      </li>
+    {% endif %}
+  {% endfor %}
+{% endcapture %}
+
+{% if total > 0 %}
+<section class="entity-section">
+  <h2>Trabalhos cadastrados</h2>
+  <ul class="entity-links">{{ trabalhos }}</ul>
+</section>
+{% endif %}

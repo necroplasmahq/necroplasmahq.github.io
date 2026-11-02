@@ -1,0 +1,74 @@
+---
+layout: default
+---
+
+<div class="entity-page">
+  <div class="container entity-page__container">
+
+    <nav class="breadcrumbs" aria-label="Trilha de navegação">
+      <ol>
+        <li><a href="{{ '/' | relative_url }}">Início</a></li>
+
+        {% if page.collection == 'personagens' %}
+          <li><a href="{{ '/personagens/' | relative_url }}">Personagens</a></li>
+        {% elsif page.collection == 'criadores' %}
+          <li><a href="{{ '/criadores/' | relative_url }}">Criadores</a></li>
+        {% else %}
+          <li><a href="{{ '/historias/' | relative_url }}">Histórias</a></li>
+        {% endif %}
+
+        <li aria-current="page">{{ page.title | escape }}</li>
+      </ol>
+    </nav>
+
+    <header class="entity-header">
+      <div class="entity-header__copy">
+        <p class="entity-kicker">
+          {% case page.collection %}
+            {% when 'personagens' %}Personagem
+            {% when 'criadores' %}Criador
+            {% when 'arcos' %}Arco narrativo
+            {% when 'edicoes' %}Edição
+            {% when 'publicacoes' %}Publicação
+          {% endcase %}
+        </p>
+
+        <h1>{{ page.title | escape }}</h1>
+
+        {% if page.description %}
+          <p class="entity-lead">{{ page.description | escape }}</p>
+        {% endif %}
+      </div>
+
+      {% if page.image %}
+        {% assign cover = page.image %}
+        {% if page.image.path %}
+          {% assign cover = page.image.path %}
+        {% endif %}
+
+        <figure class="entity-header__image">
+          <img
+            src="{{ cover | relative_url }}"
+            alt="{{ page.image.alt | default: page.image_alt | default: '' | escape }}"
+            width="520"
+            height="620"
+          >
+          {% if page.image.caption %}
+            <figcaption>{{ page.image.caption | escape }}</figcaption>
+          {% endif %}
+        </figure>
+      {% endif %}
+    </header>
+
+    <div class="entity-grid">
+      <article class="entity-main">
+        {{ content }}
+      </article>
+
+      <aside class="entity-sidebar" aria-label="Informações complementares">
+        {% include ficha-metadados.html %}
+      </aside>
+    </div>
+
+  </div>
+</div>

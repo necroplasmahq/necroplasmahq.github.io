@@ -421,12 +421,20 @@ h1, h2, h3, p {
 
 /* Artigos e páginas internas */
 
-main:not(:has(.home)) {
-  width: min(calc(100% - 2rem), var(--container));
-  margin-inline: auto;
-  padding-block: 3rem;
+
+main {
   min-height: 55vh;
 }
+
+main > :not(.home):not(.entity-page) {
+  width: min(calc(100% - 2rem), var(--container));
+  margin-inline: auto;
+}
+
+main > .entity-page {
+  width: 100%;
+}
+
 
 .post {
   max-width: 760px;
@@ -608,3 +616,4 @@ figcaption {
     transition: none;
   }
 }
+@import url("fichas.css");

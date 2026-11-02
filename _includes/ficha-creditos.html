@@ -1,0 +1,33 @@
+
+{% assign grupos = include.creditos %}
+
+{% if grupos %}
+<section class="ficha-section" aria-labelledby="creditos-title">
+  <h2 id="creditos-title">Equipe criativa</h2>
+
+  <dl class="ficha-creditos">
+    {% for grupo in grupos %}
+      {% if grupo[1].size > 0 %}
+        <div>
+          <dt>{{ grupo[0] | replace: '_', ' ' | capitalize }}</dt>
+          <dd>
+            {% for criador_id in grupo[1] %}
+              {% assign criador = site.criadores | where: "id", criador_id | first %}
+
+              {% if criador %}
+                <a href="{{ criador.url | relative_url }}">
+                  {{ criador.title | escape }}
+                </a>
+              {% else %}
+                <span>{{ criador_id | escape }}</span>
+              {% endif %}
+
+              {% unless forloop.last %}, {% endunless %}
+            {% endfor %}
+          </dd>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </dl>
+</section>
+{% endif %}

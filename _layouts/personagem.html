@@ -1,0 +1,55 @@
+---
+layout: ficha
+---
+
+<section class="entity-section">
+  <h2>Quem é</h2>
+  <div class="entity-prose">
+    {{ content }}
+  </div>
+</section>
+
+{% if page.relacoes.size > 0 %}
+<section class="entity-section">
+  <h2>Relações</h2>
+
+  <ul class="entity-links">
+    {% for relacao in page.relacoes %}
+      {% assign personagem = site.personagens | where: 'id', relacao.personagem | first %}
+      {% if personagem %}
+        <li>
+          <a href="{{ personagem.url | relative_url }}">
+            {{ personagem.title | escape }}
+          </a>
+          {% if relacao.tipo %}
+            <span>{{ relacao.tipo | escape }}</span>
+          {% endif %}
+        </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+</section>
+{% endif %}
+
+{% assign aparicoes = "" | split: "," %}
+{% for edicao in site.edicoes %}
+  {% if edicao.personagens contains page.id %}
+    {% assign aparicoes = aparicoes | push: edicao %}
+  {% endif %}
+{% endfor %}
+
+{% if aparicoes.size > 0 %}
+<section class="entity-section">
+  <h2>Aparições cadastradas</h2>
+
+  <ul class="entity-links">
+    {% for edicao in aparicoes %}
+      <li>
+        <a href="{{ edicao.url | relative_url }}">
+          {{ edicao.title | escape }}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+</section>
+{% endif %}

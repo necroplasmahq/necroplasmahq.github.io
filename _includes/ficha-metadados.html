@@ -1,0 +1,73 @@
+
+{% assign tipo = page.collection %}
+
+{% capture metadados %}
+  {% case tipo %}
+
+    {% when 'personagens' %}
+      {% if page.identidade %}
+        <div>
+          <dt>Identidade</dt>
+          <dd>{{ page.identidade | escape }}</dd>
+        </div>
+      {% endif %}
+
+      {% if page.primeira_aparicao %}
+        {% assign primeira = site.edicoes | where: 'id', page.primeira_aparicao | first %}
+        {% if primeira %}
+          <div>
+            <dt>Primeira aparição</dt>
+            <dd>
+              <a href="{{ primeira.url | relative_url }}">
+                {{ primeira.title | escape }}
+              </a>
+            </dd>
+          </div>
+        {% endif %}
+      {% endif %}
+
+    {% when 'edicoes' %}
+      {% if page.serie %}
+        <div><dt>Série</dt><dd>{{ page.serie | escape }}</dd></div>
+      {% endif %}
+
+      {% if page.numero %}
+        <div><dt>Número</dt><dd>{{ page.numero }}</dd></div>
+      {% endif %}
+
+      {% if page.ano %}
+        <div><dt>Ano</dt><dd>{{ page.ano }}</dd></div>
+      {% endif %}
+
+    {% when 'publicacoes' %}
+      {% if page.editora %}
+        <div><dt>Editora</dt><dd>{{ page.editora | escape }}</dd></div>
+      {% endif %}
+
+      {% if page.pais %}
+        <div><dt>País</dt><dd>{{ page.pais | escape }}</dd></div>
+      {% endif %}
+
+      {% if page.isbn %}
+        <div><dt>ISBN</dt><dd>{{ page.isbn | escape }}</dd></div>
+      {% endif %}
+
+    {% when 'arcos' %}
+      {% if page.edicoes.size > 0 %}
+        <div>
+          <dt>Edições cadastradas</dt>
+          <dd>{{ page.edicoes.size }}</dd>
+        </div>
+      {% endif %}
+
+  {% endcase %}
+{% endcapture %}
+
+{% assign metadados_limpos = metadados | strip %}
+
+{% if metadados_limpos != "" %}
+  <section class="entity-facts" aria-labelledby="facts-heading">
+    <h2 id="facts-heading">Ficha técnica</h2>
+    <dl>{{ metadados }}</dl>
+  </section>
+{% endif %}

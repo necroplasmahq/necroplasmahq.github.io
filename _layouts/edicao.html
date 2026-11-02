@@ -1,0 +1,32 @@
+---
+layout: ficha
+---
+
+<section class="entity-section">
+  <h2>Sobre a edição</h2>
+  <div class="entity-prose">{{ content }}</div>
+</section>
+
+{% if page.creditos %}
+<section class="entity-section">
+  {% include ficha-creditos.html creditos=page.creditos %}
+</section>
+{% endif %}
+
+{% if page.personagens.size > 0 %}
+<section class="entity-section">
+  <h2>Personagens</h2>
+  <ul class="entity-links">
+    {% for id in page.personagens %}
+      {% assign personagem = site.personagens | where: 'id', id | first %}
+      {% if personagem %}
+        <li>
+          <a href="{{ personagem.url | relative_url }}">
+            {{ personagem.title | escape }}
+          </a>
+        </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+</section>
+{% endif %}
